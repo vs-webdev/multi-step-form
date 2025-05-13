@@ -1,42 +1,26 @@
+:root{
+  --Blue-50: hsl(231, 100%, 99%);
+  --Blue-950: hsl(213, 96%, 18%);
+  --Purple-200: hsl(229, 24%, 87%);
+  --Purple-600: hsl(243, 100%, 62%);
+  --Blue-100: hsl(218, 100%, 97%);
+  --Blue-200: hsl(206, 94%, 87%);
+  --Blue-300: hsl(228, 100%, 84%);
+  --Red-500: hsl(354, 84%, 57%);
+  --Grey-500: hsl(231, 11%, 63%);
+  --White: hsl(0, 100%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
