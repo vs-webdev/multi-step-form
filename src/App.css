@@ -24,3 +24,149 @@
   padding: 2rem;
   text-align: center;
 }
+
+li{
+  list-style: none;
+}
+
+.form-container{
+  display: flex;
+}
+
+.steps-info-container{
+  width: 274px;
+  height: 535px;
+  background-color: var(--Purple-600);
+  border-radius: 1rem;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner{
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+}
+
+.steps > li {
+  display: flex;
+  color: var(--White);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+
+  & .step-num{
+    width: 36px;
+    height: 36px;
+    border: 2px solid;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+
+  & div{
+    text-align: left;
+  }
+  
+  & h2 {
+    font-size: 10px;
+  }
+  
+  & p {
+    line-height: 1.2;
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+header{
+  text-align: left;
+}
+
+.inp-container{
+  display: grid;
+  text-align: left;
+
+  & input{
+    height: 46px;
+    width: 480px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+}
+
+.plans{
+  display: flex;
+  justify-content: space-between;
+  width: 480px;
+  height: 208px;
+  gap: 1rem;
+
+  & li{
+    border: 1px solid;
+    width: 100%;
+    height: 80%;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+
+    & img {
+      width: 40px;
+    }
+  }
+}
+
+.switch-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-container > .toggle {
+  height: 1.2rem;
+  width: 2.3rem;
+  border-radius: 25px;
+  border: 1px solid;
+  margin: 0 1rem 0;
+  position: relative;
+
+  & div{
+    height: 12px;
+    width: 12px;
+    border: 1px solid;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 4px;
+  }
+}
+
+.add-ons > li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid;
+  width: 480px;
+  height: 84px;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 1rem;
+
+  & .state{
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
+}
