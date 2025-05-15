@@ -1,10 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import StepsInfo from './components/StepsInfo'
-import One from './steps/One'
-import Two from './steps/Two'
-import Three from './steps/Three'
-import Four from './steps/Four'
+import StepPanel from './components/StepPanel'
 
 function App() {
   const [formData, setFormData] = useState({
@@ -29,10 +26,7 @@ function App() {
     <>
       <form action="" className='form-container'>
         <StepsInfo steps={steps}/>
-        <One />
-        <Two />
-        <Three />
-        <Four />
+        <StepPanel currentStep={currentStep} setCurrentStep={setCurrentStep} setCompleted={setCompleted}/>
       </form>
     </>
   )
