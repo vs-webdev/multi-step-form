@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import StepsInfo from './components/StepsInfo'
 import StepPanel from './components/StepPanel'
@@ -13,8 +13,10 @@ function App() {
     large_storage: false,
     custom_profile: false,
   })
+  const [infoCompleted, setInfoCompleted] = useState(false)
   const [completed, setCompleted] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
+  
   const steps = [
     {id: 1, content: 'your info'},
     {id: 2, content: 'select plan'},
@@ -25,8 +27,16 @@ function App() {
   return (
     <>
       <form action="" className='form-container'>
-        <StepsInfo steps={steps}/>
-        <StepPanel currentStep={currentStep} setCurrentStep={setCurrentStep} setCompleted={setCompleted}/>
+        <StepsInfo steps={steps} setCurrentStep={setCurrentStep}/>
+        <StepPanel 
+          currentStep={currentStep} 
+          setCurrentStep={setCurrentStep} 
+          setCompleted={setCompleted}
+          formData={formData}
+          setFormData={setFormData}
+          infoCompleted={infoCompleted}
+          setInfoCompleted={setInfoCompleted}
+        />
       </form>
     </>
   )

@@ -1,5 +1,5 @@
 
-const StepsInfo = ({steps}) => {
+const StepsInfo = ({steps, setCurrentStep}) => {
   const width = 274;
   const height = 225;
 
@@ -8,7 +8,7 @@ const StepsInfo = ({steps}) => {
       <ul className="steps">
         {
           steps.map(step => 
-            <li key={step.id}>
+            <li key={step.id} onClick={() => setCurrentStep(step.id)}>
               <div className="step-num">{step.id}</div>
               <div>
                 <h2>Step {step.id}</h2>
