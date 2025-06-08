@@ -1,25 +1,41 @@
 import arcade from '/icon-arcade.svg'
 import advanced from '/icon-advanced.svg'
 import pro from '/icon-pro.svg'
+import { useEffect, useState } from 'react'
 
-const Two = () => {
-  const plans = [
+const Two = ({setFormData}) => {
+  const [planDuration, setPlanDuration] = useState(true)
+  const [plans, setPlans] = useState([
     {
       title: 'Arcade',
       price: 9,
       icon: arcade,
+      selected: true,
     },
     {
       title: 'Advanced',
       price: 12,
       icon: advanced,
+      selected: false,
     },
     {
       title: 'Pro',
       price: 15,
       icon: pro,
+      selected: false,
     },
-  ]
+  ])
+
+  const onSelectPlan = (title, id) => {
+    setPlans(prev => prev.map((plan, pId) => id === pId ? ({...plan, selected: true}) : ({...plan, selected: false})))
+    setFormData(prev => ({...prev, plan_type: [title, prev.plan_type[1]]}))
+  }
+  
+  useEffect(() => {
+    const newPlanDuration = planDuration ? 'monthly' : 'yearly'
+    setFormData(prev => ({...prev, plan_type: [prev.plan_type[0], newPlanDuration]}))
+  }, [planDuration])
+
   return (
     <div className="step-container">
       <header>
@@ -27,10 +43,10 @@ const Two = () => {
         <h2>You have the option of monthly or yearly billing.</h2>
       </header>
       <div className="content">
-        <ul className='plans'>
+        <ul className='plans-container'>
           {plans.map((plan, index) => 
-            <li className="" key={index}>
-              <img src={plan.icon} alt="" />
+            <li className={`plan ${plan.selected ? 'active-plan' : ''}`} key={index} onClick={() => onSelectPlan(plan.title, index)}>
+              <img src={plan.icon} alt="Plan Icon" />
               <div>
                 <h3>{plan.title}</h3>
                 <p>${plan.price}/mo</p>
@@ -41,7 +57,7 @@ const Two = () => {
 
         <div className='switch-container'>
           <span>Monthly</span>
-          <div className="toggle">
+          <div className="toggle" onClick={() => setPlanDuration(prev => !prev)}>
             <div></div>
           </div>
           <span>Yearly</span>

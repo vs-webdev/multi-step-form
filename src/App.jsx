@@ -8,12 +8,11 @@ function App() {
     name: "",
     email: "",
     phone: "",
-    plan_type: "",
+    plan_type: ['Arcade', 'monthly'],
     online_service: false,
     large_storage: false,
     custom_profile: false,
   })
-  const [infoCompleted, setInfoCompleted] = useState(false)
   const [completed, setCompleted] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   
@@ -34,8 +33,6 @@ function App() {
           setCompleted={setCompleted}
           formData={formData}
           setFormData={setFormData}
-          infoCompleted={infoCompleted}
-          setInfoCompleted={setInfoCompleted}
         />
       </form>
     </>
