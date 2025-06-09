@@ -28,12 +28,12 @@ const Two = ({setFormData}) => {
 
   const onSelectPlan = (title, id) => {
     setPlans(prev => prev.map((plan, pId) => id === pId ? ({...plan, selected: true}) : ({...plan, selected: false})))
-    setFormData(prev => ({...prev, plan_type: [title, prev.plan_type[1]]}))
+    setFormData(prev => ({...prev, plan: {...prev.plan, type: title}}))
   }
   
   useEffect(() => {
     const newPlanDuration = planDuration ? 'monthly' : 'yearly'
-    setFormData(prev => ({...prev, plan_type: [prev.plan_type[0], newPlanDuration]}))
+    setFormData(prev => ({...prev, plan: {...prev.plan, duration: newPlanDuration}}))
   }, [planDuration])
 
   return (

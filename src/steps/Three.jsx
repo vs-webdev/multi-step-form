@@ -1,6 +1,8 @@
+import { useState } from "react"
+import checkMark from '/icon-checkmark.svg'
 
 const Three = () => {
-  const addOns = [
+  const [addOns, setAddOns] = useState([
     {
       heading: 'Online Service',
       description: 'Access to multiplayer games',
@@ -11,15 +13,15 @@ const Three = () => {
       heading: 'Large Storage',
       description: 'Extra 1TB of cloud save',
       state: false,
-      price: 1,
+      price: 2,
     },
     {
       heading: 'Customizable Profile',
       description: 'Custom theme on your profile',
       state: false,
-      price: 1,
+      price: 2,
     },
-  ]
+  ])
 
   return (
     <div className="step-container">
@@ -30,13 +32,25 @@ const Three = () => {
       <div className="content">
         <ul className="add-ons">
           {addOns.map((addOn, index) =>
-            <li key={index}>
-              <div className="state">{addOn.state}</div>
-              <div>
-                <h3>{addOn.heading}</h3>
-                <p>{addOn.description}</p>
+            <li key={index} className={`add-on ${addOn.state ? 'active-addOn' : ''}`} 
+              onClick={() => setAddOns(prev => {
+                return prev.map((addOn, i) => {
+                  if (index === i) {
+                    return {...addOn, state: !addOn.state} 
+                  } else {
+                    return {...addOn}
+                  }
+                })
+              })}
+            >
+              <div className={`state ${addOn.state ? 'checkmark' : ''}`}>{addOn.state && <img src={checkMark} /> }</div>
+              <div className="add-on-info">
+                <div className="add-on-head">
+                  <h3>{addOn.heading}</h3>
+                  <p>{addOn.description}</p>
+                </div>
+                <p>+${addOn.price}/mo</p>
               </div>
-              <p>+${addOn.price}/mo</p>
             </li>
           )}
         </ul>

@@ -8,7 +8,7 @@ function App() {
     name: "",
     email: "",
     phone: "",
-    plan_type: ['Arcade', 'monthly'],
+    plan: {type: 'Arcade', duration: 'monthly'},
     online_service: false,
     large_storage: false,
     custom_profile: false,

@@ -179,28 +179,59 @@ header{
     border-radius: 50%;
     position: absolute;
     top: 2px;
-    left: 4px;
+    left: 4px;;
   }
 }
 
-.add-ons > li{
+.add-on {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border: 1px solid;
   width: 480px;
   height: 84px;
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 1rem;
+}
 
-  & .state{
-    width: 20px;
-    height: 20px;
-    border: 1px solid;
-    border-radius: 4px;
-    margin-right: 1rem;
-  }
+.add-on-info{
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.active-addOn{
+  background-color: var(--Blue-100);
+  border-color: var(--Purple-600);
+}
+
+.state{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.checkmark{
+  background-color: var(--Purple-600);
+}
+
+.final-plan{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .btn-container{
@@ -219,9 +250,11 @@ header{
 
 .btn-left > button{
   background-color: var(--White);
+  cursor: pointer;
 }
 
 .btn-right > button{
   background-color: var(--Blue-950);
   color: var(--White);
+  cursor: pointer;
 }

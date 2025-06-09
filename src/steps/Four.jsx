@@ -1,20 +1,21 @@
 
-const Four = () => {
+const Four = ({formData}) => {
+  
   return (
     <div className="step-container">
       <header>
-        <h1>Pick Add-ons</h1>
-        <h2>Add-ons help enhance your gaming experience</h2>
+        <h1>Finishing up</h1>
+        <h2>Double-check everything looks OK before confirming.</h2>
       </header>
       <div className="content">
-        <div>
+        <div className="final-plan">
           <div>
-            <h3>Arcade (Monthly)</h3>
+            <h3>{formData.plan.type} ({formData.plan.duration})</h3>
             <span>Change</span>
           </div>
           <span>$9/mo</span>
         </div>
-        <div>
+        <div className="total">
           <p>Total (per month)</p>
           <span>+$9/mo</span>
         </div>
