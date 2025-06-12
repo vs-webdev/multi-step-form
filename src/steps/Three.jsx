@@ -1,27 +1,15 @@
-import { useState } from "react"
+
 import checkMark from '/icon-checkmark.svg'
 
-const Three = () => {
-  const [addOns, setAddOns] = useState([
-    {
-      heading: 'Online Service',
-      description: 'Access to multiplayer games',
-      state: false,
-      price: 1,
-    },
-    {
-      heading: 'Large Storage',
-      description: 'Extra 1TB of cloud save',
-      state: false,
-      price: 2,
-    },
-    {
-      heading: 'Customizable Profile',
-      description: 'Custom theme on your profile',
-      state: false,
-      price: 2,
-    },
-  ])
+const Three = ({setFormData, formData}) => {
+  
+  const handleAddOn = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      addOns: prev.addOns.map((addOn, i) => 
+        (index === i) ? {...addOn, state: !addOn.state} : {...addOn})
+    }))
+  }
 
   return (
     <div className="step-container">
@@ -31,17 +19,10 @@ const Three = () => {
       </header>
       <div className="content">
         <ul className="add-ons">
-          {addOns.map((addOn, index) =>
-            <li key={index} className={`add-on ${addOn.state ? 'active-addOn' : ''}`} 
-              onClick={() => setAddOns(prev => {
-                return prev.map((addOn, i) => {
-                  if (index === i) {
-                    return {...addOn, state: !addOn.state} 
-                  } else {
-                    return {...addOn}
-                  }
-                })
-              })}
+          {formData.addOns.map((addOn, index) =>
+            <li key={index} 
+              className={`add-on ${addOn.state ? 'active-addOn' : ''}`} 
+              onClick={() => handleAddOn(index, addOn)}
             >
               <div className={`state ${addOn.state ? 'checkmark' : ''}`}>{addOn.state && <img src={checkMark} /> }</div>
               <div className="add-on-info">

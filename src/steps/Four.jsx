@@ -15,6 +15,15 @@ const Four = ({formData}) => {
           </div>
           <span>$9/mo</span>
         </div>
+        <ul className="total-add-on">
+          {
+            formData.addOns.map((addOn, addOnInd) => (
+              <li key={addOnInd}>
+                <h3>{addOn.heading}</h3>
+              </li>
+            ))
+          }
+        </ul>
         <div className="total">
           <p>Total (per month)</p>
           <span>+$9/mo</span>

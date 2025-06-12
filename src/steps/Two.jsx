@@ -1,40 +1,19 @@
-import arcade from '/icon-arcade.svg'
-import advanced from '/icon-advanced.svg'
-import pro from '/icon-pro.svg'
 import { useEffect, useState } from 'react'
+import {plansData} from '../data.js'
 
-const Two = ({setFormData}) => {
-  const [planDuration, setPlanDuration] = useState(true)
-  const [plans, setPlans] = useState([
-    {
-      title: 'Arcade',
-      price: 9,
-      icon: arcade,
-      selected: true,
-    },
-    {
-      title: 'Advanced',
-      price: 12,
-      icon: advanced,
-      selected: false,
-    },
-    {
-      title: 'Pro',
-      price: 15,
-      icon: pro,
-      selected: false,
-    },
-  ])
+const Two = ({setFormData, formData}) => {
+  const [planDurationState, setPlanDurationState] = useState(true)
+  const [plans, setPlans] = useState(plansData)
 
-  const onSelectPlan = (title, id) => {
+  const onSelectPlan = (plan, id) => {
+    setFormData(prev => ({...prev, plan: {...prev.plan, type: plan.title, price: plan.price}}))
     setPlans(prev => prev.map((plan, pId) => id === pId ? ({...plan, selected: true}) : ({...plan, selected: false})))
-    setFormData(prev => ({...prev, plan: {...prev.plan, type: title}}))
   }
   
   useEffect(() => {
-    const newPlanDuration = planDuration ? 'monthly' : 'yearly'
+    const newPlanDuration = planDurationState ? 'monthly' : 'yearly'
     setFormData(prev => ({...prev, plan: {...prev.plan, duration: newPlanDuration}}))
-  }, [planDuration])
+  }, [planDurationState])
 
   return (
     <div className="step-container">
@@ -45,7 +24,10 @@ const Two = ({setFormData}) => {
       <div className="content">
         <ul className='plans-container'>
           {plans.map((plan, index) => 
-            <li className={`plan ${plan.selected ? 'active-plan' : ''}`} key={index} onClick={() => onSelectPlan(plan.title, index)}>
+            <li className={`plan ${plan.title === formData.plan.type ? 'active-plan' : ''}`} 
+              key={index} 
+              onClick={() => onSelectPlan(plan, index)}
+            >
               <img src={plan.icon} alt="Plan Icon" />
               <div>
                 <h3>{plan.title}</h3>
@@ -57,7 +39,7 @@ const Two = ({setFormData}) => {
 
         <div className='switch-container'>
           <span>Monthly</span>
-          <div className="toggle" onClick={() => setPlanDuration(prev => !prev)}>
+          <div className="toggle" onClick={() => setPlanDurationState(prev => !prev)}>
             <div></div>
           </div>
           <span>Yearly</span>
