@@ -1,5 +1,13 @@
+import { useEffect, useState } from "react"
 
 const Four = ({formData}) => {
+  const [total, setTotal] = useState(0)
+  const duration = formData.duration === 'mo' ? 'monthly' : 'yearly'
+  useEffect(() => {
+    const selectedAddOns = formData.addOns.filter(addOn => addOn.state)
+    const totalAddOns = selectedAddOns.reduce((acc, curr) => acc +  curr.price[duration], 0)
+    setTotal(totalAddOns + formData.plan.price[duration])
+  }, [])
   
   return (
     <div className="step-container">
@@ -10,23 +18,26 @@ const Four = ({formData}) => {
       <div className="content">
         <div className="final-plan">
           <div>
-            <h3>{formData.plan.type} ({formData.plan.duration})</h3>
+            <h3>{formData.plan.type} (<span>{duration}</span>)</h3>
             <span>Change</span>
           </div>
-          <span>$9/mo</span>
+          <span>${formData.plan.price[duration]}/{formData.duration}</span>
         </div>
         <ul className="total-add-on">
           {
-            formData.addOns.map((addOn, addOnInd) => (
-              <li key={addOnInd}>
-                <h3>{addOn.heading}</h3>
-              </li>
-            ))
+            formData.addOns.map((addOn, addOnInd) => {
+              if (addOn.state){
+                return (<li key={addOnInd}>
+                  <h2>{addOn.heading}</h2>
+                  <span>+{addOn.price[duration]}/{formData.duration}</span>
+                </li>)
+              }
+            })
           }
         </ul>
         <div className="total">
-          <p>Total (per month)</p>
-          <span>+$9/mo</span>
+          <p>Total (per {duration})</p>
+          <span>+${total}/mo</span>
         </div>
       </div>
     </div>

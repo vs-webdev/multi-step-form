@@ -158,30 +158,37 @@ header{
   border-color: var(--Purple-600);
 }
 
-.switch-container{
+.toggle-container{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.switch-container > .toggle {
-  height: 1.2rem;
-  width: 2.3rem;
+.toggle-container > .toggle {
+  background-color: var(--Blue-950);
+  height: 24px;
+  width: 50px;
   border-radius: 25px;
-  border: 1px solid;
   margin: 0 1rem 0;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 
-  & div{
-    height: 12px;
-    width: 12px;
-    border: 1px solid;
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 4px;;
-  }
+.toggle-switch{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  position: absolute;
+  /* top: 2px; */
+  left: 4px;
+  transition: left .6s ease;
+  background-color: var(--White);
+}
+
+.right{
+  left: 28px
 }
 
 .add-on {
@@ -234,6 +241,13 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.total-add-on{
+  & li{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .btn-container{

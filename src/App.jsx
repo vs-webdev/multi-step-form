@@ -9,8 +9,9 @@ function App() {
     name: "",
     email: "",
     phone: "",
-    plan: {type: 'Arcade', duration: 'monthly', price: 9},
+    plan: {type: 'Arcade', price: {monthly: 9, yearly: 90}},
     addOns: [...addOnsData],
+    duration: 'mo',
   })
   const [completed, setCompleted] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)

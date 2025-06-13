@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {plansData} from '../data.js'
 
 const Two = ({setFormData, formData}) => {
-  const [planDurationState, setPlanDurationState] = useState(true)
   const [plans, setPlans] = useState(plansData)
 
   const onSelectPlan = (plan, id) => {
     setFormData(prev => ({...prev, plan: {...prev.plan, type: plan.title, price: plan.price}}))
     setPlans(prev => prev.map((plan, pId) => id === pId ? ({...plan, selected: true}) : ({...plan, selected: false})))
   }
-  
-  useEffect(() => {
-    const newPlanDuration = planDurationState ? 'monthly' : 'yearly'
-    setFormData(prev => ({...prev, plan: {...prev.plan, duration: newPlanDuration}}))
-  }, [planDurationState])
+
+  const handleToggle = () => {
+    setFormData(prev => ({...prev, duration: prev.duration === 'mo' ? 'yr' : 'mo'}))
+  }
 
   return (
     <div className="step-container">
@@ -31,16 +29,16 @@ const Two = ({setFormData, formData}) => {
               <img src={plan.icon} alt="Plan Icon" />
               <div>
                 <h3>{plan.title}</h3>
-                <p>${plan.price}/mo</p>
+                <p>${formData.duration === 'mo' ? plan.price.monthly : plan.price.yearly}/{formData.duration}</p>
               </div>
             </li>
           )}
         </ul>
 
-        <div className='switch-container'>
+        <div className='toggle-container'>
           <span>Monthly</span>
-          <div className="toggle" onClick={() => setPlanDurationState(prev => !prev)}>
-            <div></div>
+          <div className="toggle" onClick={handleToggle}>
+            <div className={`toggle-switch ${formData.duration === 'yr' && 'right'}`}></div>
           </div>
           <span>Yearly</span>
         </div>
