@@ -30,7 +30,7 @@ const Three = ({setFormData, formData}) => {
                   <h3>{addOn.heading}</h3>
                   <p>{addOn.description}</p>
                 </div>
-                <p>+${formData.duration === 'mo' ? addOn.price.monthly : addOn.price.yearly}/{formData.duration}</p>
+                <p className='add-on-price'>+${formData.duration === 'mo' ? addOn.price.monthly : addOn.price.yearly}/{formData.duration}</p>
               </div>
             </li>
           )}

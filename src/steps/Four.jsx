@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const Four = ({formData}) => {
+const Four = ({formData, setCurrentStep}) => {
   const [total, setTotal] = useState(0)
   const duration = formData.duration === 'mo' ? 'monthly' : 'yearly'
   useEffect(() => {
@@ -16,28 +16,30 @@ const Four = ({formData}) => {
         <h2>Double-check everything looks OK before confirming.</h2>
       </header>
       <div className="content">
-        <div className="final-plan">
-          <div>
-            <h3>{formData.plan.type} (<span>{duration}</span>)</h3>
-            <span>Change</span>
+        <div className="summary-container">
+          <div className="final-plan">
+            <div>
+              <h3>{formData.plan.type} (<span>{duration}</span>)</h3>
+              <span className="change" onClick={() => setCurrentStep(2)}>Change</span>
+            </div>
+            <span className="final-plan-price">${formData.plan.price[duration]}/{formData.duration}</span>
           </div>
-          <span>${formData.plan.price[duration]}/{formData.duration}</span>
+          <ul>
+            {
+              formData.addOns.map((addOn, addOnInd) => {
+                if (addOn.state){
+                  return (<li key={addOnInd} className="total-add-on">
+                    <h2>{addOn.heading}</h2>
+                    <span>+{addOn.price[duration]}/{formData.duration}</span>
+                  </li>)
+                }
+              })
+            }
+          </ul>
         </div>
-        <ul className="total-add-on">
-          {
-            formData.addOns.map((addOn, addOnInd) => {
-              if (addOn.state){
-                return (<li key={addOnInd}>
-                  <h2>{addOn.heading}</h2>
-                  <span>+{addOn.price[duration]}/{formData.duration}</span>
-                </li>)
-              }
-            })
-          }
-        </ul>
         <div className="total">
           <p>Total (per {duration})</p>
-          <span>+${total}/mo</span>
+          <span>${total}/mo</span>
         </div>
       </div>
     </div>

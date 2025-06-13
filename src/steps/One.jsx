@@ -18,7 +18,7 @@ const One = ({formData, setFormData, errors}) => {
           <p className="error">This field is required</p>
         }
         <label htmlFor="name">Name</label>
-        <input type="text" placeholder="e.g Stephen King" id="name" value={formData.name} onChange={e => handleOnChange(e, 'name')}/>
+        <input className={`input ${(errors.name.required || errors.name.invalid) ? 'input-err' : ''}`} type="text" placeholder="e.g Stephen King" id="name" value={formData.name} onChange={e => handleOnChange(e, 'name')}/>
       </div>
 
       <div className="inp-container">
@@ -30,8 +30,8 @@ const One = ({formData, setFormData, errors}) => {
           !errors.email.required && errors.email.invalid &&
           <p className="error">Invalid email address</p>
         }
-        <label htmlFor="email">Email</label>
-        <input type="email" placeholder="e.g stephenking@lorem.com" id="email" value={formData.email} onChange={e => handleOnChange(e, 'email')}/>
+        <label htmlFor="email">Email Address</label>
+        <input className={`input ${(errors.email.required || errors.email.invalid) ? 'input-err' : ''}`} type="email" placeholder="e.g stephenking@lorem.com" id="email" value={formData.email} onChange={e => handleOnChange(e, 'email')}/>
       </div>
 
       <div className="inp-container">
@@ -44,7 +44,7 @@ const One = ({formData, setFormData, errors}) => {
           <p className="error">Invalid phone number</p>
         }
         <label htmlFor="phone">Phone Number</label>
-        <input type="number" placeholder="e.g +1 234 567 890" id="phone" value={formData.phone} onChange={e => handleOnChange(e, 'phone')}/>
+        <input className={`input ${(errors.phone.required || errors.phone.invalid) ? 'input-err' : ''}`} type="number" placeholder="e.g +1 234 567 890" id="phone" value={formData.phone} onChange={e => handleOnChange(e, 'phone')}/>
       </div>
     </div>
   )

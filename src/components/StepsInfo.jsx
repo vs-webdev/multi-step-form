@@ -8,9 +8,9 @@ const StepsInfo = ({steps, setCurrentStep}) => {
       <ul className="steps">
         {
           steps.map(step => 
-            <li key={step.id} onClick={() => setCurrentStep(step.id)}>
+            <li key={step.id}>
               <div className="step-num">{step.id}</div>
-              <div>
+              <div className="step-detail">
                 <h2>Step {step.id}</h2>
                 <p>{step.content}</p>
               </div>

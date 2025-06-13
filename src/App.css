@@ -29,6 +29,11 @@ li{
   list-style: none;
 }
 
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px var(--White) inset !important;
+  /* -webkit-text-fill-color: var(--Blue-950) !important; */
+}
+
 .form-container{
   display: flex;
   padding: 1rem;
@@ -46,7 +51,7 @@ li{
 
 .steps-info-container{
   width: 274px;
-  height: 535px;
+  height: 555px;
   background-color: var(--Purple-600);
   border-radius: 1rem;
   padding: 32px;
@@ -63,7 +68,7 @@ li{
 .steps > li {
   display: flex;
   color: var(--White);
-  cursor: pointer;
+  cursor: default;
   margin-bottom: 1rem;
   margin-top: 1rem;
   text-transform: uppercase;
@@ -71,7 +76,7 @@ li{
   & .step-num{
     width: 36px;
     height: 36px;
-    border: 2px solid;
+    border: 1px solid;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -86,13 +91,20 @@ li{
   }
   
   & h2 {
-    font-size: 10px;
+    font-size: 11px;
   }
   
   & p {
-    line-height: 1.2;
+    line-height: 1.4;
     font-size: 14px;
     font-weight: 700;
+  }
+}
+
+.step-detail{
+  & h2{
+    color: var(--Grey-500);
+    font-size: 1rem;
   }
 }
 
@@ -101,9 +113,16 @@ header{
   margin-bottom: 2rem;
 
   & h1{
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-top: 20px;
-    margin-bottom: 12px;
+    margin-bottom: .5rem;
+    color: var(--Blue-950);
+  }
+
+  & h2{
+    color: var(--Grey-500);
+    font-weight: 500;
+    font-size: 1rem;
   }
 }
 
@@ -111,20 +130,38 @@ header{
   display: grid;
   text-align: left;
   position: relative;
+  color: var(--Blue-950);
 
-  & input{
-    height: 46px;
-    width: 480px;
-    padding: 0 14px;
-    border-radius: 8px;
-    border: 1px solid;
+  & label{
+    margin-bottom: .3rem;
+  }
+}
+
+.input{
+  height: 46px;
+  width: 480px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid var(--Blue-300);
+  color: var(--Blue-950);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  outline: none;
+
+  &:focus{
+    border-color: var(--Purple-600);
   }
 }
 
 .error{
-  color: red;
+  color: var(--Red-500);
+  font-weight: 500;
   position: absolute;
   right: 0;;
+}
+
+.input-err{
+  border-color: var(--Red-500);
 }
 
 .plans-container{
@@ -153,6 +190,19 @@ header{
   width: 40px;
 }
 
+.plan-detail{
+  & h3{
+    color: var(--Blue-950);
+  }
+  & p{
+    color: var(--Grey-500);
+  }
+}
+
+.plan:hover{
+  border-color: var(--Purple-600);
+}
+
 .active-plan{
   background-color: var(--Blue-50);
   border-color: var(--Purple-600);
@@ -162,6 +212,8 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--Blue-950);
+  font-weight: 500;
 }
 
 .toggle-container > .toggle {
@@ -194,13 +246,20 @@ header{
 .add-on {
   display: flex;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid var(--Blue-300);
   width: 480px;
   height: 84px;
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 1rem;
   cursor: pointer;
+}
+
+.add-on-head{
+  & p{
+    color: var(--Grey-500);
+    font-size: 14px;
+  }
 }
 
 .add-on-info{
@@ -222,19 +281,54 @@ header{
   justify-content: center;
   width: 20px;
   height: 20px;
-  border: 1px solid;
+  border: 1px solid var(--Blue-300);
   border-radius: 4px;
   margin-right: 1rem;
 }
 
+.add-on-price{
+  color: var(--Purple-600);
+}
+
 .checkmark{
   background-color: var(--Purple-600);
+  border: none;
+}
+
+.summary-container{
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  border-radius: 8px;
+  background-color: var(--Blue-100);
+  margin-bottom: 1.5rem;
 }
 
 .final-plan{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--Grey-500);
+
+  & div{
+    text-align: left;
+  }
+}
+
+.change{
+  color: var(--Grey-500);
+  text-decoration: underline;
+}
+
+.change:hover{
+  color: var(--Purple-600);
+  cursor: pointer;
+}
+
+.final-plan-price{
+  font-weight: 700;
+  color: var(--Blue-950);
+  font-size: 1.1rem;
 }
 
 .total{
@@ -244,9 +338,30 @@ header{
 }
 
 .total-add-on{
-  & li{
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 1.2rem;
+  
+  & h2{
+    font-weight: 500;
+    color: var(--Grey-500);
+  }
+
+  & span{
+    font-weight: 500;
+    color: var(--Blue-950);
+  }
+}
+
+.total{
+  & p{
+    color: var(--Grey-500);
+  }
+
+  & span{
+    color: var(--Purple-600);
+    font-weight: 700;
+    font-size: 1.2rem;
   }
 }
 

@@ -56,6 +56,7 @@ const StepPanel = ({currentStep, setCurrentStep, setCompleted, formData, setForm
         setFormData={setFormData} 
         errors={errors}
         setErrors={setErrors}
+        setCurrentStep={setCurrentStep}
       />
       <div className="btn-container">
         <div className="btn-left">

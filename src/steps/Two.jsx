@@ -27,7 +27,7 @@ const Two = ({setFormData, formData}) => {
               onClick={() => onSelectPlan(plan, index)}
             >
               <img src={plan.icon} alt="Plan Icon" />
-              <div>
+              <div className='plan-detail'>
                 <h3>{plan.title}</h3>
                 <p>${formData.duration === 'mo' ? plan.price.monthly : plan.price.yearly}/{formData.duration}</p>
               </div>
