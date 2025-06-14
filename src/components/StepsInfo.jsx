@@ -1,5 +1,5 @@
 
-const StepsInfo = ({steps, setCurrentStep}) => {
+const StepsInfo = ({steps, currentStep}) => {
   const width = 274;
   const height = 225;
 
@@ -9,7 +9,7 @@ const StepsInfo = ({steps, setCurrentStep}) => {
         {
           steps.map(step => 
             <li key={step.id}>
-              <div className="step-num">{step.id}</div>
+              <div className={`step-num ${currentStep === step.id && 'active-step'}`}>{step.id}</div>
               <div className="step-detail">
                 <h2>Step {step.id}</h2>
                 <p>{step.content}</p>

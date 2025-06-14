@@ -3,6 +3,7 @@
   --Blue-100: hsl(218, 100%, 97%);
   --Blue-200: hsl(206, 94%, 87%);
   --Blue-300: hsl(228, 100%, 84%);
+  --Blue-500: hsl(213, 100%, 31%);
   --Blue-950: hsl(213, 96%, 18%);
   --Purple-200: hsl(229, 24%, 87%);
   --Purple-600: hsl(243, 100%, 62%);
@@ -101,6 +102,12 @@ input:-webkit-autofill {
   }
 }
 
+.active-step{
+  color: var(--Blue-950);
+  background-color: var(--Blue-200);
+  border-color: var(--Blue-200);
+}
+
 .step-detail{
   & h2{
     color: var(--Grey-500);
@@ -167,32 +174,34 @@ header{
 .plans-container{
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   width: 480px;
-  height: 208px;
+  height: 213px;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .plan{
   border: 1px solid var(--Blue-200);
   background-color: var(--White);
   width: 100%;
-  height: 80%;
   border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-align: left;
   cursor: pointer;
 }
 
 .plan img{
   width: 40px;
+  margin: 0rem 0rem 3rem 0rem;
 }
 
 .plan-detail{
   & h3{
     color: var(--Blue-950);
+    margin-bottom: 5px;
   }
   & p{
     color: var(--Grey-500);
@@ -206,6 +215,12 @@ header{
 .active-plan{
   background-color: var(--Blue-50);
   border-color: var(--Purple-600);
+}
+
+.free-detail{
+  color: var(--Blue-950);
+  font-weight: 500;
+  margin-top: 5px;
 }
 
 .toggle-container{
@@ -233,14 +248,17 @@ header{
   width: 18px;
   border-radius: 50%;
   position: absolute;
-  /* top: 2px; */
   left: 4px;
-  transition: left .6s ease;
+  transition: left .5s ease;
   background-color: var(--White);
 }
 
 .right{
-  left: 28px
+  left: 28px;
+}
+
+.active-duration{
+  color: var(--Grey-500);
 }
 
 .add-on {
@@ -253,6 +271,10 @@ header{
   padding: 24px;
   margin-bottom: 1rem;
   cursor: pointer;
+}
+
+.add-on:hover{
+  border-color: var(--Purple-600);
 }
 
 .add-on-head{
@@ -312,6 +334,10 @@ header{
 
   & div{
     text-align: left;
+
+    & h3{
+      color: var(--Blue-950);
+    }
   }
 }
 
@@ -335,6 +361,7 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 1.5rem;
 }
 
 .total-add-on{
@@ -370,7 +397,7 @@ header{
   justify-content: space-between;
   
   & button{
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     padding: 16px 24px;
     border-radius: 8px;
@@ -382,10 +409,45 @@ header{
 .btn-left > button{
   background-color: var(--White);
   cursor: pointer;
+  color: var(--Grey-500);
 }
 
 .btn-right > button{
-  background-color: var(--Blue-950);
   color: var(--White);
   cursor: pointer;
+}
+
+.next-btn{
+  background-color: var(--Blue-950);
+}
+
+.next-btn:hover{
+  background-color: var(--Blue-500);
+}
+
+.confirm-btn{
+  background-color: var(--Purple-600);
+}
+
+.success-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & img{
+    margin-bottom: 2rem;
+  }
+
+  & h1{
+    font-size: 2rem;
+    color: var(--Blue-950);
+    margin-bottom: 1rem;
+  }
+
+  & p{
+    color: var(--Grey-500);
+  }
 }

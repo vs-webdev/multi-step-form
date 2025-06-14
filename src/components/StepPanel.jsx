@@ -3,8 +3,9 @@ import Two from "../steps/Two"
 import Three from "../steps/Three"
 import Four from "../steps/Four"
 import { useState } from "react"
+import Success from "./Success"
 
-const StepPanel = ({currentStep, setCurrentStep, setCompleted, formData, setFormData}) => {
+const StepPanel = ({currentStep, setCurrentStep, formSucess, setFormSucess, formData, setFormData}) => {
   const steps = [One, Two, Three, Four]
   const ActiveStep = steps[currentStep - 1]
   const [errors, setErrors] = useState({
@@ -15,7 +16,7 @@ const StepPanel = ({currentStep, setCurrentStep, setCompleted, formData, setForm
 
   const validateInfo = () => {
     let newErrors = {...errors}
-    const {name, email, phone} = formData;
+    const {email, phone} = formData;
     const fields = ['name', 'email', 'phone']
 
     fields.forEach(field => {
@@ -29,8 +30,8 @@ const StepPanel = ({currentStep, setCurrentStep, setCompleted, formData, setForm
     setErrors(newErrors)
     
     let hasError = Object.entries(newErrors).flatMap(([_, value]) => {
-      return Object.entries(value).map(([_, eValue]) => eValue
-      )}).some(Boolean)
+      return Object.entries(value).map(([_, eValue]) => eValue)
+    }).some(Boolean)
 
     return !hasError
   }
@@ -45,13 +46,14 @@ const StepPanel = ({currentStep, setCurrentStep, setCompleted, formData, setForm
     } else if (word === 'back'){
       setCurrentStep(prev => prev - 1)
     } else {
-      setCompleted(true)
+      setFormSucess(true)
     }
   }
 
   return (
     <div className="step-panel-container">
-      <ActiveStep
+      { formSucess ? <Success />
+        : (<><ActiveStep
         formData={formData}
         setFormData={setFormData} 
         errors={errors}
@@ -65,11 +67,11 @@ const StepPanel = ({currentStep, setCurrentStep, setCompleted, formData, setForm
           <div className="btn-right">
             {
               currentStep !== 4
-              ? <button onClick={(e) => handleNavigation(e, 'next')}>Next Step</button>
-              : <button onClick={(e) => handleNavigation(e, 'confirm')}>Confirm</button>
+              ? <button className="next-btn" onClick={(e) => handleNavigation(e, 'next')}>Next Step</button>
+              : <button className="confirm-btn" onClick={(e) => handleNavigation(e, 'confirm')}>Confirm</button>
             }
           </div>
-      </div>
+      </div></>)}
     </div>
   )
 }

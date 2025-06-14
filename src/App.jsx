@@ -13,7 +13,7 @@ function App() {
     addOns: [...addOnsData],
     duration: 'mo',
   })
-  const [completed, setCompleted] = useState(false)
+  const [formSucess, setFormSucess] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   
   const steps = [
@@ -23,16 +23,15 @@ function App() {
     {id: 4, content: 'summary'},
   ]
 
-  console.log(formData)
-
   return (
     <>
       <form action="" className='form-container'>
-        <StepsInfo steps={steps} setCurrentStep={setCurrentStep}/>
+        <StepsInfo steps={steps} currentStep={currentStep}/>
         <StepPanel 
           currentStep={currentStep} 
           setCurrentStep={setCurrentStep} 
-          setCompleted={setCompleted}
+          formSucess={formSucess}
+          setFormSucess={setFormSucess}
           formData={formData}
           setFormData={setFormData}
         />

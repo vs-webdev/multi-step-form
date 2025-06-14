@@ -31,16 +31,17 @@ const Two = ({setFormData, formData}) => {
                 <h3>{plan.title}</h3>
                 <p>${formData.duration === 'mo' ? plan.price.monthly : plan.price.yearly}/{formData.duration}</p>
               </div>
+              {formData.duration === 'yr' && <p className='free-detail'>2 months free</p>}
             </li>
           )}
         </ul>
 
         <div className='toggle-container'>
-          <span>Monthly</span>
+          <span className={`${formData.duration === 'mo' && 'active-duration'}`}>Monthly</span>
           <div className="toggle" onClick={handleToggle}>
             <div className={`toggle-switch ${formData.duration === 'yr' && 'right'}`}></div>
           </div>
-          <span>Yearly</span>
+          <span className={`${formData.duration === 'yr' && 'active-duration'}`}>Yearly</span>
         </div>
       </div>
     </div>
