@@ -29,9 +29,9 @@ const Two = ({setFormData, formData}) => {
               <img src={plan.icon} alt="Plan Icon" />
               <div className='plan-detail'>
                 <h3>{plan.title}</h3>
-                <p>${formData.duration === 'mo' ? plan.price.monthly : plan.price.yearly}/{formData.duration}</p>
+                <p className='plan-desc'>${formData.duration === 'mo' ? plan.price.monthly : plan.price.yearly}/{formData.duration}</p>
+                {formData.duration === 'yr' && <p className='free-detail'>2 months free</p>}
               </div>
-              {formData.duration === 'yr' && <p className='free-detail'>2 months free</p>}
             </li>
           )}
         </ul>

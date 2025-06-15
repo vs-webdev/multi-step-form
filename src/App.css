@@ -22,7 +22,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -32,7 +32,7 @@ li{
 
 input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px var(--White) inset !important;
-  /* -webkit-text-fill-color: var(--Blue-950) !important; */
+  -webkit-text-fill-color: var(--Blue-950) !important;
 }
 
 .form-container{
@@ -58,12 +58,9 @@ input:-webkit-autofill {
   padding: 32px;
   position: relative;
   overflow: hidden;
-}
-
-.banner{
-  position: absolute;
-  bottom: -8px;
-  left: 0;
+  background-image: url('/bg-sidebar-desktop.svg');
+  background-position: center;
+  background-size: cover;
 }
 
 .steps > li {
@@ -73,20 +70,8 @@ input:-webkit-autofill {
   margin-bottom: 1rem;
   margin-top: 1rem;
   text-transform: uppercase;
-
-  & .step-num{
-    width: 36px;
-    height: 36px;
-    border: 1px solid;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 2;
-    font-weight: bold;
-    margin-right: 1rem;
-  }
-
+  z-index: 1;
+  
   & div{
     text-align: left;
   }
@@ -100,6 +85,19 @@ input:-webkit-autofill {
     font-size: 14px;
     font-weight: 700;
   }
+}
+
+.step-num{
+  width: 36px;
+  height: 36px;
+  border: 1px solid;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 2;
+  font-weight: bold;
+  margin-right: 1rem;
 }
 
 .active-step{
@@ -203,7 +201,7 @@ header{
     color: var(--Blue-950);
     margin-bottom: 5px;
   }
-  & p{
+  & .plan-desc{
     color: var(--Grey-500);
   }
 }
@@ -278,6 +276,9 @@ header{
 }
 
 .add-on-head{
+  & h3{
+    color: var(--Blue-950);
+  }
   & p{
     color: var(--Grey-500);
     font-size: 14px;
@@ -436,9 +437,10 @@ header{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   & img{
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   & h1{
@@ -449,5 +451,90 @@ header{
 
   & p{
     color: var(--Grey-500);
+  }
+}
+
+@media (max-width: 400px) {
+  .form-container{
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+  }
+
+  .steps-info-container{
+    width: 100%;
+    border-radius: 0;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    background-image: url('/bg-sidebar-mobile.svg');
+    background-position: center;
+    background-size: cover;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+  }
+
+  .step-detail{
+    display: none;
+  }
+  
+  .step-panel-container{
+    margin: 0 1rem;
+    width: auto;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    background-color: white;
+    position: absolute;
+    top: 130px;
+  }
+
+  .step-num{
+    margin-right: 0;
+  }
+
+  .input{
+    width: 100%;
+  }
+
+  .plans-container{
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .plan{
+    flex-direction: row;
+
+    & img{
+      margin: 0 1rem 0 0;
+    }
+  }
+
+  .add-on{
+    width: 100%;
+    padding: 24px 14px;
+  }
+
+  .success-container{
+    margin: 5rem 0;
+    padding: .5rem;
+  }
+
+  .btn-container{
+    margin: 5rem 0 2rem;
+    position: absolute;
+    width: 100vw;
+    left: -20px;
+    padding: 1rem;
+    background-color: var(--White);
+    bottom: -200px;
   }
 }
